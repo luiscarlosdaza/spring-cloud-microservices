@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 //Se quita la propiedad url porque se agrega Ribbon para que decida que puerto o instancia de currency-exchange utiliza.
 //@FeignClient(name = "currency-exchange-service", url = "localhost:8000")
 @Service
-@FeignClient(name = "currency-exchange-service")
+@FeignClient(name = "netflix-zuul-api-gateway-server")
 @RibbonClient(name = "currency-exchange-service")
 public interface CurrencyExchangeServiceProxy {
 
-    @GetMapping("/currency-exchange/from/{from}/to/{to}")
+    @GetMapping("currency-exchange-service/currency-exchange/from/{from}/to/{to}")
     CurrencyConversionBean retrieveExchangeValue(@PathVariable("from") String from, @PathVariable("to") String to);
 }
